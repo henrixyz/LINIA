@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <div class="card-chapter"></div>
+     <div class="card">
+    <div id="output" class="legend-text">Seu texto aparecerá aqui...</div>
+    <!-- <button id="fileInput">enviar arquivo</button> -->
+     <hr>
+    <button id="restartBtn">reiniciar</button>
+    <button id="prevBtn">voltar</button>
+    <button id="pauseBtn">⏸️</button>
+    <button id="speedBtn">3s</button>
+  </div>
+ <!-- TabBar -->
+    <div class="tabbar">
+        <button class="tab">🏠</button>
+
+        <!-- Botão "+" para upload -->
+        <label for="fileInput">
+        <button class="upload-btn">+</button>
+        </label>
+        <input type="file" id="fileInput" onchange="handleFile(event)"/>
+
+        <button class="tab">📊</button>
+    </div>
+    <script src="../main.js"></script>
+</body>
+</html>
