@@ -160,3 +160,4 @@ speedBtn.addEventListener('click', () => {
   if (currentSpeed > maxSpeed) currentSpeed = minSpeed;
   speedBtn.textContent = `${currentSpeed / 1000}s`;
 });
+
