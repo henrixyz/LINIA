@@ -14,6 +14,7 @@ const minSpeed = 1000;         // Velocidade mínima (1s)
 const maxSpeed = 6000;         // Velocidade máxima (6s)
 
 
+
 // ============================
 // 🎯 ELEMENTOS DA INTERFACE
 // ============================
