@@ -64,7 +64,7 @@ body {
 .search-bar button {
   background: none;
   border: none;
-  cursor: not-allowed; /* muda depois */
+  cursor: not-allowed; 
   padding: 8px;
 }
 
@@ -78,12 +78,12 @@ body {
 /*======================== INICIO ESTANTE ==================================*/
 .book-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 150px)); /* 3 colunas de até 150px */
+  grid-template-columns: repeat(3, minmax(0, 150px)); 
   gap: 20px;
   padding: 30px;
-  justify-content: center; /* centraliza o grid */
-  max-width: calc(150px * 3 + 20px * 2 + 60px); /* largura máxima do grid para celular */
-  margin: 0 auto; /* centraliza horizontalmente */
+  justify-content: center; 
+  max-width: calc(150px * 3 + 20px * 2 + 60px); 
+  margin: 0 auto; 
 }
 
 .book-item {
@@ -108,7 +108,7 @@ body {
   border-radius: 4px;
 }
 
-/* Para telas maiores que 768px */
+
 @media (min-width: 768px) {
   .book-grid {
     grid-template-columns: repeat(4, minmax(0, 150px)); /* 4 colunas com largura máxima 150px */
@@ -121,7 +121,7 @@ body {
 
 .tabbar {
     position: fixed;
-    bottom: 20px; /* dá espaço para flutuar */
+    bottom: 20px; 
     left: 50%;
     transform: translateX(-50%);
     background: hsl(0, 0%, 100%); 
