@@ -62,7 +62,7 @@ a {
   width: 100%;
   max-width: 1000px;
   margin: 0 auto;
-  padding: 0 1rem; /* espaço nas laterais em telas pequenas */
+  padding: 0 1rem; 
 }
 
 .conteiner-tags {
@@ -176,7 +176,7 @@ a {
 /* Estilo da tab bar */
 .tabbar {
     position: fixed;
-    bottom: 20px; /* dá espaço para flutuar */
+    bottom: 20px; 
     left: 50%;
     transform: translateX(-50%);
     background: hsl(0, 0%, 100%); 
@@ -230,7 +230,7 @@ a {
 
 
 
-/* nao sei do que se trata */
+/* nao lembro oq é mais */
 /* .card {
     background: rgb(0, 0, 0);
     border-radius: 5px;
