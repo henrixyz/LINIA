@@ -83,7 +83,7 @@ document.getElementById('fileInput').addEventListener('change', function(event) 
     chunks = splitTextBySentences(text);
     restartBtn.disabled = false;
     isPaused = false;
-    pauseBtn.textContent = '⏸️ ';
+    pauseBtn.textContent = '⏸️';
     showCurrentChunk();
   };
 
@@ -109,7 +109,7 @@ restartBtn.addEventListener('click', () => {
   prevBtnUsageCount = 0;
   updatePrevBtnState();
   isPaused = false;
-  pauseBtn.textContent = '⏸️ Pausar';
+  pauseBtn.textContent = '⏸️';
   showCurrentChunk();
 });
 
