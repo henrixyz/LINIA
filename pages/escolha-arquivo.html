@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> leia</title>
+    <link rel="stylesheet" href="../assets/css/cabecario.css">
     <link rel="stylesheet" href="../assets/css/escolha-arquivo.css">
+    
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 
 </head>
@@ -18,36 +20,50 @@
     <!-- </a> -->
     </header>
 
-
+    <div class="wrapper">
+        <div class="card-title">            
+            <div class="title-cap">ESCOLHA</div>
+        </div>
+    </div>
 
     <div class="wrapper">
-    <label for="fileInput">
+      <label for="fileInput">
         <div class="card card-1">
-        <div class="card-content">
+          <div class="card-content">
             <div class="title-plus">+</div>
             <div class="subtitle">selecione arquivo</div>
-        </div>
+          </div>
           <div class="tags-group">
             <div class="mini-tag-1">TXT</div>
             <div class="mini-tag-2">PDF</div>
             <div class="mini-tag-3">EPUB</div>
           </div>
         </div>
-    </label>
-    <input type="file" id="fileInput" onchange="handleFile(event)" style="display: none;" />
+      </label>
+      <input type="file" id="fileInput" onchange="handleFile(event)" accept=".txt,application/pdf" style="display: none;" />
     </div>
 
 
+    <div class="wrapper">
+        <div class="card-title">            
+            <div class="title-or">ou</div>
+        </div>
+    </div>
 
     
     <div class="wrapper">
-        <div class="card card-2">
+      <div class="card card-2" onclick="toggleBiblioteca()">
         <div class="card-content">
-            <img src="../assets/img/icons8-book-shelf-100.png" class="icone-estante" alt="">
-            <div class="subtitle">livros da biblioteca</div>
-          </div>
+          <img src="../assets/img/icons8-book-shelf-100.png" class="icone-estante" alt="">
+          <div class="subtitle">livros da biblioteca</div>
         </div>
       </div>
+
+      <!-- Este container vai receber os livros -->
+      <div id="bibliotecaContainer" style="display: none;">
+        <!-- Livros serão inseridos via JS aqui -->
+      </div>
+    </div>
       
       
       <!-- <div class="wrapper">
@@ -65,6 +81,11 @@
         </a>
   </div> -->
 
+
     <script src="../assets/scripts/escolha-arquivo.js"></script>
+    <script src="../assets/scripts/biblioteca-interna.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
+    
+
 </body>
 </html>

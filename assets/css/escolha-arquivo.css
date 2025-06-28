@@ -2,6 +2,10 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    user-select: none;
+    -webkit-user-select: none; /* (Safari, Chrome) */
+    -moz-user-select: none;    /* para Firefox */
+    -ms-user-select: none;     /* para Internet Explorer/Edge */
 }
 
 body {
@@ -51,6 +55,34 @@ a {
     padding: 0 1rem;
 }
 
+.card-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 3.5rem;
+}
+
+.title-cap{
+    color: #cbc5c5;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.4rem;
+    font-weight: bold;
+    line-height: 2rem;  
+    margin: 0; 
+    text-align: center; 
+}
+
+.title-or{
+    color: #cbc5c5;
+    font-size: 1.1rem;
+    font-weight: bold; 
+    margin: 0; 
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}   
+
 .card-1 {
     display: flex;
     flex-direction: column; 
@@ -78,10 +110,12 @@ a {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
     padding: 0.8rem 1rem;
     margin: 0.3rem 1rem;
+    margin-bottom: 1rem;
+
 }
 
 .card:hover {
-    transform: scale(1.01);
+    transform: scale(1.02);
 }
 
 .card-content {
@@ -156,8 +190,40 @@ a {
 
 .icone-estante {
     font-family: 'Bebas Neue', sans-serif;
-    height: 3.2rem;
+    height: 2.8rem;
     text-align: center;
     margin: 0;
     padding: 0;
+}
+
+
+/* parte da biblioteca */
+.livro-card {
+    background: #f6f0f0;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    margin-top: 1rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    cursor: pointer;
+    padding: 0.8rem 1rem;
+    height: 6rem;
+    margin: 0.3rem 1rem;
+}
+
+.livro-card:hover {
+    transform: scale(1.02);
+}
+    
+.livro-card img {
+  width: 60px;
+  height: 80px;
+  border-radius: 8px;
+  margin-right: 1rem;
+}
+
+.livro-info {
+  display: flex;
+  flex-direction: column;
 }

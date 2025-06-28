@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> leia</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
+
+    <link rel="stylesheet" href="../assets/css/cabecario.css">
+    <link rel="stylesheet" href="../assets/css/capitulo.css">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 
 </head>
@@ -18,12 +20,21 @@
     <!-- </a> -->
     </header>
 
-    <div id="output">Carregando...</div>
-    <button id="restartBtn">🔁</button>
-    <button id="prevBtn">⏮️</button>
-    <button id="pauseBtn">⏸️</button>
-    <button id="speedBtn">3s</button>
+  <main class="central-area">
+    <div class="conteiner-output">
+      <div id="output">Carregando...</div>
+    </div>
 
-    <script src="../assets/scripts/capitulo.js"></script>
+    <div class="conteiner-buttons">
+      <button id="restartBtn">🔁</button>
+      <button id="prevBtn">⏮️</button>
+      <button id="pauseBtn">⏸️</button>
+      <button id="speedBtn">3s</button>
+    </div>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
+  <script src="../assets/scripts/capitulo.js"></script>
+  <!-- <script src="../main.js"></script> -->
 </body>
 </html>

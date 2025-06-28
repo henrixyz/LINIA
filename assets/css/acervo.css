@@ -77,43 +77,43 @@ body {
 
 /*======================== INICIO ESTANTE ==================================*/
 .book-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 150px)); 
-  gap: 20px;
-  padding: 30px;
-  justify-content: center; 
-  max-width: calc(150px * 3 + 20px * 2 + 60px); 
-  margin: 0 auto; 
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 150px)); 
+    gap: 20px;
+    padding: 30px;
+    justify-content: center; 
+    max-width: calc(150px * 3 + 20px * 2 + 60px); 
+    margin: 0 auto; 
 }
 
 .book-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .cover-placeholder {
-  width: 100%;
-  aspect-ratio: 2 / 3;
-  background-color: #ccc;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    background-color: #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .book-title {
-  margin-top: 10px;
-  width: 80%;
-  height: 16px;
-  background-color: #ddd;
-  border-radius: 4px;
+    margin-top: 10px;
+    width: 80%;
+    height: 16px;
+    background-color: #ddd;
+    border-radius: 4px;
 }
 
 
 @media (min-width: 768px) {
-  .book-grid {
-    grid-template-columns: repeat(4, minmax(0, 150px)); /* 4 colunas com largura máxima 150px */
-    max-width: calc(150px * 4 + 20px * 3 + 60px); /* aumenta largura máxima para 4 colunas */
-  }
+    .book-grid {
+      grid-template-columns: repeat(4, minmax(0, 150px)); /* 4 colunas com largura máxima 150px */
+      max-width: calc(150px * 4 + 20px * 3 + 60px); /* aumenta largura máxima para 4 colunas */
+    }
 }
 /* ==============================FIM ESTANTE =================================== */
 

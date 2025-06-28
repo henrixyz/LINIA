@@ -1,18 +1,17 @@
 // ============================
 // 🔁 VARIÁVEIS GLOBAIS
 // ============================
-let chunks = [];               // Armazena os blocos de texto
-let currentIndex = 0;          // Índice da legenda atual
-let timerId = null;            // ID do temporizador para controle do tempo
-let isPaused = false;          // Controle de pausa
+let chunks = [];
+let currentIndex = 0;
+let timerId = null;
+let isPaused = false;
 
-let prevBtnUsageCount = 0;     // Quantas vezes usou o botão "voltar"
-const prevBtnMaxUsage = 3;     // Limite de usos do botão "voltar"
+let prevBtnUsageCount = 0;
+const prevBtnMaxUsage = 3;
 
-let currentSpeed = 3000;       // Velocidade padrão (3 segundos)
-const minSpeed = 1000;         // Velocidade mínima (1s)
-const maxSpeed = 6000;         // Velocidade máxima (6s)
-
+let currentSpeed = 3000;
+const minSpeed = 1000;
+const maxSpeed = 6000;
 
 
 // ============================
@@ -26,17 +25,30 @@ const speedBtn = document.getElementById('speedBtn');
 
 
 // ============================
-// ✂️ DIVIDIR TEXTO EM BLOCOS
-// ============================
-function splitTextByWords(text, maxWords = 10) {
-  const words = text.split(/\s+/);
-  let result = [];
+// ✂️ DIVISÃO INTELIGENTE POR PONTO E VÍRGULA
+function smartSplit(text, minWords = 3) {
+  const sentenceBlocks = text.split(/(?<=[.!?])\s+/); // divide por frases
+  const finalChunks = [];
 
-  for (let i = 0; i < words.length; i += maxWords) {
-    result.push(words.slice(i, i + maxWords).join(' '));
-  }
+  sentenceBlocks.forEach(sentence => {
+    const commaParts = sentence.split(',');
+    const grouped = [];
 
-  return result;
+    for (let i = 0; i < commaParts.length; i++) {
+      let current = commaParts[i].trim();
+      const wordCount = current.split(/\s+/).filter(Boolean).length;
+
+      if (wordCount < minWords && grouped.length > 0) {
+        grouped[grouped.length - 1] += ', ' + current;
+      } else {
+        grouped.push(current);
+      }
+    }
+
+    finalChunks.push(...grouped);
+  });
+
+  return finalChunks;
 }
 
 
@@ -55,7 +67,7 @@ document.getElementById('fileInput').addEventListener('change', function(event) 
   const reader = new FileReader();
   reader.onload = function(e) {
     const text = e.target.result;
-    chunks = splitTextByWords(text, 10);
+    chunks = smartSplit(text, 3);
     restartBtn.disabled = false;
     startSequence();
   };
@@ -119,7 +131,7 @@ prevBtn.addEventListener('click', () => {
   timerId = setTimeout(() => {
     currentIndex++;
     startSequence();
-  }, 6000); // pausa maior ao voltar
+  }, 6000);
 });
 
 
@@ -144,11 +156,11 @@ pauseBtn.addEventListener('click', () => {
   if (isPaused) {
     isPaused = false;
     pauseBtn.textContent = '⏸️';
-    startSequence(); // retoma
+    startSequence();
   } else {
     isPaused = true;
     pauseBtn.textContent = '▶️';
-    clearTimeout(timerId); // pausa
+    clearTimeout(timerId);
   }
 });
 
@@ -161,4 +173,3 @@ speedBtn.addEventListener('click', () => {
   if (currentSpeed > maxSpeed) currentSpeed = minSpeed;
   speedBtn.textContent = `${currentSpeed / 1000}s`;
 });
-

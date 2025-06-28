@@ -5,7 +5,6 @@
       return;
     }
 
-    // Dividir por capítulos (pode ajustar essa expressão)
     const capitulos = texto.split(/cap[ií]tulo\s+\d+/i).filter(t => t.trim() !== "");
 
     const container = document.getElementById("capitulosContainer");

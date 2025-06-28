@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+    -webkit-user-select: none; /* (Safari, Chrome) */
+    -moz-user-select: none;    /* para Firefox */
+    -ms-user-select: none;     /* para Internet Explorer/Edge */
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: #06090f;
+    padding-bottom: 80px; /
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000000;
+    color: white;
+    padding: 1rem 1.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.308);
+}
+
+.logo {
+    width: 2rem;
+}
+
+.logo-nome {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+.hamburger {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
