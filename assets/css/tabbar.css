@@ -1,0 +1,54 @@
+.tabbar {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(30, 30, 30, 0.6); /* semi-transparente */
+    padding: 15px 30px;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+    z-index: 100;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    
+    backdrop-filter: blur(12px);     /* efeito de vidro fosco */
+    -webkit-backdrop-filter: blur(12px); /* suporte para Safari */
+}
+
+.tab {
+    width: 1.3rem;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: filter 0.3s, opacity 0.3s;
+}
+
+.tab.active {
+    filter: brightness(0) saturate(100%) invert(77%) sepia(97%) saturate(2500%) hue-rotate(360deg);
+    opacity: 1;
+}
+
+/* Botão "+" */
+.upload-btn {
+    background-color: #111;
+    color: white;
+    font-size: 2rem;
+    width: 58px;
+    height: 58px;
+    border-radius: 8px;
+    border: none;
+    position: relative;
+    top: -25px;
+    z-index: 2;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#fileInput {
+    display: none;
+}
