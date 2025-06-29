@@ -6,7 +6,7 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background: #f5f5f5;
+    background: #06090f;
     padding-bottom: 80px; /
 }
 
@@ -73,6 +73,36 @@ body {
   height: 24px;
   opacity: 0.6;
 }
+
+
+
+
+
+.wrapper {
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+    padding-top: 0 1rem;
+
+}
+
+.card-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 2.5rem;
+}
+
+.title-cap{
+    color: #cbc5c5;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.4rem;
+    font-weight: bold;
+    margin: 0; 
+    text-align: center; 
+}
+
 /*======================== FIM PESQUISA ==================================*/
 
 /*======================== INICIO ESTANTE ==================================*/
@@ -100,12 +130,26 @@ body {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+.cover-placeholder:hover{
+    transform: scale(1.02);
+}
+
 .book-title {
     margin-top: 10px;
-    width: 80%;
-    height: 16px;
-    background-color: #ddd;
+    width: 90px;
+    height: 25px;
+    background-color: #fcd600;
     border-radius: 4px;
+    padding: 4px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+
+    /* remover regras de texto */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* evita esticar a imagem */
+    object-fit: contain;
 }
 
 
