@@ -82,8 +82,8 @@ body {
     width: 100%;
     max-width: 1000px;
     margin: auto;
-    padding-top: 0 1rem;
-
+    padding-top: 5rem 4rem;
+    
 }
 
 .card-title {
@@ -131,7 +131,7 @@ body {
 }
 
 .cover-placeholder:hover{
-    transform: scale(1.02);
+    transform: scale(1.05);
 }
 
 .book-title {

@@ -63,6 +63,14 @@ a {
     height: 3.5rem;
 }
 
+.card-title-or {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 1.2rem;
+}
+
 .title-cap{
     color: #cbc5c5;
     font-family: 'Bebas Neue', sans-serif;

@@ -3,7 +3,7 @@
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(30, 30, 30, 0.6); /* semi-transparente */
+    background: rgba(30, 30, 30, 0.6);
     padding: 15px 30px;
     border-radius: 25px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
@@ -14,8 +14,8 @@
     z-index: 100;
     border: 1px solid rgba(255, 255, 255, 0.2);
     
-    backdrop-filter: blur(12px);     /* efeito de vidro fosco */
-    -webkit-backdrop-filter: blur(12px); /* suporte para Safari */
+    backdrop-filter: blur(12px);  
+    -webkit-backdrop-filter: blur(12px); 
 }
 
 .tab {

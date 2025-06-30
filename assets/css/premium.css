@@ -1,0 +1,85 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background: #06090f;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 1rem;
+}
+
+.premium-card {
+    background: #121212;
+    border: 2px solid #ffd700;
+    border-radius: 16px;
+    padding: 1.5rem;
+    max-width: 320px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+}
+
+.premium-card h2 {
+    color: #ffd700;
+    font-size: 1.5rem;
+    margin-bottom: 0.8rem;
+}
+
+.premium-card .price {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin: 0.8rem 0;
+}
+
+.premium-card ul {
+    list-style: none;
+    margin: 1rem 0 1.5rem 0;
+}
+
+.premium-card ul li {
+    margin: 0.4rem 0;
+    font-size: 0.9rem;
+}
+
+.premium-card button {
+    background: #ffd700;
+    color: #000;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.premium-card button:hover {
+    background: #e6c200;
+}
+
+@media (max-width: 400px) {
+    .premium-card {
+        padding: 1.2rem;
+        max-width: 90%;
+    }
+
+    .premium-card h2 {
+        font-size: 1.3rem;
+    }
+
+    .premium-card .price {
+        font-size: 1.5rem;
+    }
+
+    .premium-card button {
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+    }
+}
