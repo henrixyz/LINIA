@@ -35,65 +35,66 @@
     <div class="book-grid">
 
     <div class="book-item">
-      <img src="assets/img/capas/dom-casmurro.jpg" class="cover-placeholder" alt="">
-      <img src="assets/img/icons8-baixar-100.png" class="book-title">
+      <img src="assets/img/capas/dom-casmurro.jpg" class="cover-placeholder" alt="Dom-Casmurro" data-book="dom-casmurro">
+      <div class="book-title">Dom Casmurro</div>
     </div>
     
     <div class="book-item">
-      <img src="assets/img/capas/o-guarani.jpg" class="cover-placeholder" alt="">
-      <img src="assets/img/icons8-baixar-100.png" class="book-title">
+      <img src="assets/img/capas/o-guarani.jpg" class="cover-placeholder" alt="O-Guarani" data-book="o-guarani">
+      <div class="book-title">O Guarani</div>
     </div>
     
     <div class="book-item">
-      <img src="assets/img/capas/iracema.jpg" class="cover-placeholder" alt="">
-      <img src="assets/img/icons8-baixar-100.png" class="book-title">
+      <img src="assets/img/capas/iracema.jpg" class="cover-placeholder" alt="Iracema" data-book="iracema">
+      <div class="book-title">Iracema</div>
     </div>
+    
+    <div class="book-item">
+      <img src="assets/img/capas/senhora.jpg" class="cover-placeholder" alt="Senhora" data-book="senhora">
+      <div class="book-title">Senhora</div>
+    </div>
+    
+    <div class="book-item">
+      <img src="assets/img/capas/a-metamorfose.jpg" class="cover-placeholder" alt="A-Metamorfose" data-book="a-metamorfose">
+      <div class="book-title">A Metamorfose</div>
+    </div>
+    
+    <div class="book-item"> 
+      <img src="assets/img/capas/quincas-borba.jpg" class="cover-placeholder" alt="Quincas-Borba" data-book="quincas-borba">
+      <div class="book-title">Quincas Borba</div>
+    </div>
+    
+    <div class="book-item">
+      <img src="assets/img/capas/romeu-e-julieta.jpg" class="cover-placeholder" alt="Romeu-e-Julieta" data-book="romeu-e-julieta">
+      <div class="book-title">Romeu e Julieta</div>
+    </div>
+    
+    <div class="book-item">
+      <img src="assets/img/capas/cortico.jpg" class="cover-placeholder" alt="O-Cortiço" data-book="o-cortico">
+      <div class="book-title">O Cortiço</div>
+    </div>
+    
+    <div class="book-item">
+      <img src="assets/img/capas/alienista.jpg" class="cover-placeholder" alt="Alienista" data-book="alienista">
+      <div class="book-title">Alienista</div>
+    </div>
+    
+    <div class="book-item">
+      <img src="assets/img/capas/moreninha.jpg" class="cover-placeholder" alt="A moreninha" data-book="a-moreninha">
+      <div class="book-title">A Moreninha</div>
+    </div>
+    
+    <div class="book-item">
+      <img src="assets/img/capas/bras-cubas.jpg" class="cover-placeholder" alt="Memórias Póstumas de Brás Cubas" data-book="bras-cubas">
+      <div class="book-title">Brás Cubas</div>
+    </div>  
+    
+    <div class="book-item">
+      <img src="assets/img/capas/o-ateneu.jpg" class="cover-placeholder" alt="O Ateneu" data-book="o-ateneu">
+      <div class="book-title">O Ateneu</div>
+    </div>  
 
-    
-    <div class="book-item">
-      <img src="assets/img/capas/senhora.jpg" class="cover-placeholder" alt="">
-      <img src="assets/img/icons8-baixar-100.png" class="book-title">
-    </div>
-    
-    <div class="book-item">
-      <img src="assets/img/capas/a-metamorfose.jpg" class="cover-placeholder" alt="">
-      <img src="assets/img/icons8-baixar-100.png" class="book-title">
-    </div>
-    
-    <div class="book-item"> 
-      <img src="assets/img/capas/quincas-borba.jpg" class="cover-placeholder" alt="">
-      <img src="assets/img/icons8-baixar-100.png" class="book-title">
-    </div>
-    
-    <div class="book-item">
-      <img src="assets/img/capas/romeu-e-julieta.jpg" class="cover-placeholder" alt="">
-      <img src="assets/img/icons8-baixar-100.png" class="book-title">
-    </div>
-    
-    <div class="book-item">
-      <img src="assets/img/capas/cortico.jpg" class="cover-placeholder" alt="">
-      <img src="assets/img/icons8-baixar-100.png" class="book-title">
-    </div>
-    
-    <div class="book-item">
-      <img src="assets/img/capas/o-corvo.jpg" class="cover-placeholder" alt="">
-      <img src="assets/img/icons8-baixar-100.png" class="book-title">
-    </div>
-    
-    <div class="book-item">
-      <img src="assets/img/capas/alice.jpg" class="cover-placeholder" alt="">
-      <img src="assets/img/icons8-baixar-100.png" class="book-title">
-    </div>
-    
-    <div class="book-item">
-      <img src="assets/img/capas/medi.jpg" class="cover-placeholder" alt="">
-      <img src="assets/img/icons8-baixar-100.png" class="book-title">
-    </div>
-    
-    <div class="book-item"> 
-      <img src="assets/img/capas/hamlet.jpg" class="cover-placeholder" alt="">
-      <img src="assets/img/icons8-baixar-100.png" class="book-title">
-    </div>
+  
     
 
     <!-- Adicione mais blocos conforme necessário --> 
@@ -122,5 +123,16 @@
     </a>
   </div>
 
+
+  <!-- Modal -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <span id="close-btn" class="close">&times;</span>
+      <p>Deseja baixar o livro?</p>
+      <a id="download-btn" href="#" download class="download-button">Baixar</a>
+    </div>
+  </div>
+
+<script src="assets/scripts/modal-livro.js"></script>
 </body>
 </html>

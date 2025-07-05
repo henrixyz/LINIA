@@ -21,11 +21,11 @@ a {
 .header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: center;    
     background-color: #000000;
     color: white;
     padding: 1rem 1.5rem;
-    position: sticky;
+    position: fixed;
     top: 0;
     z-index: 1000;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.308);
@@ -69,6 +69,8 @@ a {
     align-items: center;
     justify-content: center;
     height: 1.2rem;
+    margin: 0;
+    padding: 0;
 }
 
 .title-cap{

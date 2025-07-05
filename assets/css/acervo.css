@@ -7,7 +7,7 @@
 body {
     font-family: 'Arial', sans-serif;
     background: #06090f;
-    padding-bottom: 80px; /
+    padding-bottom: 80px;
 }
 
 .header {
@@ -17,7 +17,7 @@ body {
     background-color: #000000;
     color: white;
     padding: 1rem 1.5rem;
-    position: sticky;
+    position: fixed;
     top: 0;
     z-index: 1000;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.308);
@@ -39,73 +39,10 @@ body {
     font-size: 1.5rem;
     cursor: pointer;
 }
-/*======================== INICIO PESQUISA ==================================*/
 
-.search-bar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  margin: 20px auto;
-  padding: 0 16px;
-  max-width: 600px;
-}
-
-.search-bar input {
-  flex: 1;
-  padding: 10px 12px;
-  border: 1px solid #ccc;
-  border-radius: 12px;
-  font-size: 16px;
-  outline: none;
-  background-color: #f9f9f9;
-}
-
-.search-bar button {
-  background: none;
-  border: none;
-  cursor: not-allowed; 
-  padding: 8px;
-}
-
-.search-bar img {
-  width: 24px;
-  height: 24px;
-  opacity: 0.6;
-}
-
-
-
-
-
-.wrapper {
-    width: 100%;
-    max-width: 1000px;
-    margin: auto;
-    padding-top: 5rem 4rem;
-    
-}
-
-.card-title {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 2.5rem;
-}
-
-.title-cap{
-    color: #cbc5c5;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 2.4rem;
-    font-weight: bold;
-    margin: 0; 
-    text-align: center; 
-}
-
-/*======================== FIM PESQUISA ==================================*/
 
 /*======================== INICIO ESTANTE ==================================*/
+
 .book-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 150px)); 
@@ -130,38 +67,44 @@ body {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.cover-placeholder:hover{
+.cover-placeholder:hover {
     transform: scale(1.05);
 }
 
 .book-title {
-    margin-top: 10px;
-    width: 90px;
+    margin-top: 15px;
+    width: 100px;
     height: 25px;
+    font-size: 0.6rem;
     background-color: #fcd600;
     border-radius: 4px;
-    padding: 4px;
+    font-weight: bold;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 
-    /* remover regras de texto */
     display: flex;
     align-items: center;
     justify-content: center;
 
-    /* evita esticar a imagem */
-    object-fit: contain;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    /* impede que o conteúdo quebre ou cresça */
+    flex-shrink: 1;
+    flex-grow: 0;
+    min-width: 0;
 }
 
-
+/* Responsivo */
 @media (min-width: 768px) {
     .book-grid {
-      grid-template-columns: repeat(4, minmax(0, 150px)); /* 4 colunas com largura máxima 150px */
-      max-width: calc(150px * 4 + 20px * 3 + 60px); /* aumenta largura máxima para 4 colunas */
+        grid-template-columns: repeat(4, minmax(0, 150px));
+        max-width: calc(150px * 4 + 20px * 3 + 60px);
     }
 }
+
 /* ==============================FIM ESTANTE =================================== */
-
-
 
 .tabbar {
     position: fixed;
@@ -191,4 +134,52 @@ body {
 
 .tab.active {
     opacity: 100%;
+}
+
+/* =========================MODAL===================================== */
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    position: relative;
+    min-width: 250px;
+}
+
+.close {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.download-button {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 10px 20px;
+    background-color: #fcd600;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
 }
