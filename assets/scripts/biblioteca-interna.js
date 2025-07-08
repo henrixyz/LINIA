@@ -22,7 +22,7 @@ function toggleBiblioteca() {
         {
             titulo: "A Metamorfose",
             autor: "Franz Kafka",
-            capa: "../assets/img/capas/a-metamorfse.jpg"
+            capa: "../assets/img/caps/a-metamorfose.png"
         },  
     ];
 

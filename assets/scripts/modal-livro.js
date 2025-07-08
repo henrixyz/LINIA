@@ -2,6 +2,7 @@ const modal = document.getElementById('modal');
 const closeBtn = document.getElementById('close-btn');
 const downloadBtn = document.getElementById('download-btn');
 
+// Quando clica na imagem da capa
 document.querySelectorAll('.cover-placeholder').forEach(img => {
     img.addEventListener('click', () => {
         const bookName = img.dataset.book;
