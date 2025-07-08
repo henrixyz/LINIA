@@ -182,4 +182,5 @@ body {
     text-decoration: none;
     color: #000;
     font-weight: bold;
+    transition: background-color 0.5s, color 0.5s;
 }

@@ -3,9 +3,9 @@
     padding: 0;
     box-sizing: border-box;
     user-select: none;
-    -webkit-user-select: none; /* (Safari, Chrome) */
-    -moz-user-select: none;    /* para Firefox */
-    -ms-user-select: none;     /* para Internet Explorer/Edge */
+    -webkit-user-select: none; 
+    -moz-user-select: none;   
+    -ms-user-select: none;     
 }
 
 body {
@@ -17,6 +17,12 @@ body {
 a {
     text-decoration: none;
 }
+
+.concluido {
+  background-color: #de0303;
+  border: 1px solid #28a745;
+  color: #155724;
+}   
 
 .slogan-wrapper {
     display: flex;
@@ -42,7 +48,7 @@ a {
     font-size: 0.8rem;
     color: hsl(0, 100%, 100%);
     font-family: 'Bebas Neue', sans-serif;
-    margin: 0; /* Remove margin para centralização perfeita */
+    margin: 0; 
 }
 
 .title {

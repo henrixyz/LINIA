@@ -14,7 +14,7 @@
 </head>
 <body>
 
-    <header class="header">
+    <header class="header" id="header">
       <a href="../index.html">
         <img src="../assets/img/linea.png" class="logo" alt="">
       </a>
@@ -24,21 +24,34 @@
     <!-- </a> -->
     </header>
 
-  <main class="central-area">
-    <div class="conteiner-output">
-      <div id="output">Carregando...</div>
-    </div>
+ <div class="container-geral">
 
-    <div class="conteiner-buttons">
-      <button id="restartBtn">🔁</button>
-      <button id="prevBtn">⏮️</button>
-      <button id="pauseBtn">⏸️</button>
-      <button id="speedBtn">3s</button>
+    <div class="image">
+      <img
+        id="eyeIcon"
+        src="../assets/img/icons8-eye-100.png"
+        class="olho-aberto"
+        alt="Ícone olho"
+      />
     </div>
-  </main>
+>
+
+  <div class="conteiner-output">
+    <div id="output">Legenda aqui</div>
+  </div>
+
+  <div class="conteiner-buttons" id="hudButtons">
+    <button id="restartBtn">🔄</button>
+    <button id="prevBtn">⏮️</button>
+    <button id="pauseBtn">⏸️</button>
+    <button id="speedBtn">3s</button>
+  </div>
+
+</div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
   <script src="../assets/scripts/capitulo.js"></script>
+  <script src="../assets/scripts/esconder-hud.js"></script>
   <!-- <script src="../main.js"></script> -->
 </body>
 </html>

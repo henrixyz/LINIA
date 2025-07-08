@@ -8,12 +8,11 @@ function toggleBiblioteca() {
   } else {
     container.style.display = "block";
 
-    // Simulando livros da biblioteca
    const livros = [
         {
-            titulo: "Dom Casmurro",
+            titulo: "O Alienista",
             autor: "Machado de Assis",
-            capa: "../assets/img/capas/dom-casmurro.jpg"
+            capa: "../assets/img/capas/dom-casmurr.jpg"
         },
         {
             titulo: "Memórias Póstumas",
@@ -23,7 +22,7 @@ function toggleBiblioteca() {
         {
             titulo: "A Metamorfose",
             autor: "Franz Kafka",
-            capa: "../assets/img/capas/a-metamorfose.jpg"
+            capa: "../assets/img/capas/a-metamorfse.jpg"
         },  
     ];
 
@@ -42,6 +41,7 @@ function toggleBiblioteca() {
             alert(`Você escolheu: ${livro.titulo}`);
             // Aqui você pode salvar no localStorage ou carregar o conteúdo
       });
+
 
       container.appendChild(div);
     });

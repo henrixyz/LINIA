@@ -14,36 +14,29 @@ const prevBtn = document.getElementById('prevBtn');
 const pauseBtn = document.getElementById('pauseBtn');
 const speedBtn = document.getElementById('speedBtn');
 
-// Nova lógica de divisão inteligente
-function smartSplit(text, minWords = 3) {
-  const frases = text.split(/(?<=[.!?])\s+/);
-  const chunks = [];
+// ✅ Correção da lógica para respeitar 100% o limite
+function smartSplit(text, maxChars = 70) {
+  const words = text.split(/\s+/);
+  const result = [];
+  let chunk = '';
 
-  frases.forEach(frase => {
-    const partes = frase.split(',');
-    let buffer = '';
+  words.forEach((word, index) => {
+    const testChunk = chunk.length ? chunk + ' ' + word : word;
 
-    partes.forEach((parte, i) => {
-      const trecho = parte.trim();
-      const palavras = trecho.split(/\s+/).filter(Boolean);
+    if (testChunk.length <= maxChars) {
+      chunk = testChunk;
+    } else {
+      if (chunk) result.push(chunk.trim());
+      chunk = word;
+    }
 
-      if (palavras.length < minWords && buffer) {
-        buffer += ', ' + trecho;
-      } else {
-        if (buffer) {
-          chunks.push(buffer);
-        }
-        buffer = trecho;
-      }
-
-      if (i === partes.length - 1 && buffer) {
-        chunks.push(buffer);
-        buffer = '';
-      }
-    });
+    // Se última palavra, adiciona também
+    if (index === words.length - 1 && chunk) {
+      result.push(chunk.trim());
+    }
   });
 
-  return chunks;
+  return result;
 }
 
 function carregarCapitulo() {
@@ -52,7 +45,7 @@ function carregarCapitulo() {
     outputEl.textContent = "Erro ao carregar capítulo.";
     return;
   }
-  chunks = smartSplit(texto, 3); // usa nova lógica aprimorada
+  chunks = smartSplit(texto, 70); // ✅ Respeita 40 caracteres agora
   startSequence();
 }
 
@@ -63,12 +56,15 @@ function startSequence() {
     currentIndex++;
     timerId = setTimeout(startSequence, currentSpeed);
   } else if (currentIndex >= chunks.length) {
-    outputEl.textContent = "Fim do capítulo.";
+    outputEl.textContent = "Fim da seção.";
+    marcarComoConcluido();
   }
 }
 
 function showCurrentChunk() {
-  outputEl.textContent = chunks[currentIndex];
+  if (currentIndex < chunks.length) {
+    outputEl.textContent = chunks[currentIndex];
+  }
 }
 
 restartBtn.addEventListener('click', () => {
@@ -95,8 +91,14 @@ prevBtn.addEventListener('click', () => {
 pauseBtn.addEventListener('click', () => {
   isPaused = !isPaused;
   pauseBtn.textContent = isPaused ? '▶️' : '⏸️';
-  if (!isPaused) startSequence();
-  else clearTimeout(timerId);
+
+  if (isPaused) {
+    outputEl.classList.add('paused');
+    clearTimeout(timerId);
+  } else {
+    outputEl.classList.remove('paused');
+    startSequence();
+  }
 });
 
 speedBtn.addEventListener('click', () => {
@@ -104,5 +106,14 @@ speedBtn.addEventListener('click', () => {
   if (currentSpeed > maxSpeed) currentSpeed = minSpeed;
   speedBtn.textContent = `${currentSpeed / 1000}s`;
 });
+
+function marcarComoConcluido() {
+  const capitulo = localStorage.getItem("capituloSelecionado");
+  let concluidos = JSON.parse(localStorage.getItem("capitulosConcluidos") || "[]");
+  if (!concluidos.includes(capitulo)) {
+    concluidos.push(capitulo);
+    localStorage.setItem("capitulosConcluidos", JSON.stringify(concluidos));
+  }
+}
 
 carregarCapitulo();
