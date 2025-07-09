@@ -4,7 +4,7 @@ let timerId = null;
 let isPaused = false;
 let prevBtnUsageCount = 0;
 const prevBtnMaxUsage = 3;
-let currentSpeed = 3000;
+
 const minSpeed = 1000;
 const maxSpeed = 6000;
 
@@ -14,28 +14,96 @@ const prevBtn = document.getElementById('prevBtn');
 const pauseBtn = document.getElementById('pauseBtn');
 const speedBtn = document.getElementById('speedBtn');
 
-// ✅ Correção da lógica para respeitar 100% o limite
-function smartSplit(text, maxChars = 70) {
-  const words = text.split(/\s+/);
+// Níveis de velocidade: -3x, -2x, -1x, 1x, 2x, 3x
+const speedLevels = [-3, -2, -1, 1, 2, 3];
+let currentSpeedIndex = 3; // Começa em 1x
+
+function getDisplayTime(text) {
+  const baseTime = 1000;
+  const timePerChar = 50;
+
+  let time = baseTime + text.length * timePerChar;
+
+  if (time < minSpeed) time = minSpeed;
+  if (time > maxSpeed) time = maxSpeed;
+
+  return time;
+}
+
+function getDisplayTimeAdjusted(text) {
+  let time = getDisplayTime(text);
+  const speedValue = speedLevels[currentSpeedIndex];
+
+  if (speedValue < 0) {
+    time = time * Math.abs(speedValue); // mais devagar
+  } else {
+    time = time / speedValue; // mais rápido
+  }
+
+  if (time < minSpeed) time = minSpeed;
+  if (time > maxSpeed) time = maxSpeed;
+
+  return time;
+}
+
+function smartSplit(text, maxChars = 60) {
+  const sentences = text.match(/[^.!?]+[.!?]*|\s+/g)
+    .filter(Boolean)
+    .map(s => s.trim());
+
   const result = [];
-  let chunk = '';
 
-  words.forEach((word, index) => {
-    const testChunk = chunk.length ? chunk + ' ' + word : word;
-
-    if (testChunk.length <= maxChars) {
-      chunk = testChunk;
+  sentences.forEach(sentence => {
+    if (sentence.length <= maxChars) {
+      result.push(sentence);
     } else {
-      if (chunk) result.push(chunk.trim());
-      chunk = word;
-    }
+      let parts = [];
+      let temp = '';
+      const fragments = sentence.split(',');
 
-    // Se última palavra, adiciona também
-    if (index === words.length - 1 && chunk) {
-      result.push(chunk.trim());
+      for (let i = 0; i < fragments.length; i++) {
+        const fragment = fragments[i].trim();
+        const nextPart = temp ? temp + ', ' + fragment : fragment;
+
+        if (nextPart.length <= maxChars) {
+          temp = nextPart;
+        } else {
+          if (temp) {
+            parts.push(...splitByWords(temp, maxChars));
+          }
+          temp = fragment;
+        }
+      }
+
+      if (temp) {
+        parts.push(...splitByWords(temp, maxChars));
+      }
+
+      result.push(...parts);
     }
   });
 
+  return result;
+}
+
+function splitByWords(text, maxChars) {
+  const words = text.split(/\s+/);
+  const result = [];
+  let temp = '';
+
+  for (let i = 0; i < words.length; i++) {
+    const word = words[i];
+    const next = temp ? temp + ' ' + word : word;
+
+    if (next.length <= maxChars) {
+      temp = next;
+    } else {
+      if (temp) result.push(temp);
+      temp = word;
+    }
+  }
+
+  if (temp) result.push(temp);
   return result;
 }
 
@@ -45,7 +113,10 @@ function carregarCapitulo() {
     outputEl.textContent = "Erro ao carregar capítulo.";
     return;
   }
-  chunks = smartSplit(texto, 70); // ✅ Respeita 40 caracteres agora
+
+  const textoLimpo = texto.replace(/^cap[ií]tulo\s+\d+.*\n?/i, '').trim();
+
+  chunks = smartSplit(textoLimpo, 60);
   startSequence();
 }
 
@@ -53,8 +124,9 @@ function startSequence() {
   clearTimeout(timerId);
   if (!isPaused && currentIndex < chunks.length) {
     showCurrentChunk();
+    const displayTime = getDisplayTimeAdjusted(chunks[currentIndex]);
     currentIndex++;
-    timerId = setTimeout(startSequence, currentSpeed);
+    timerId = setTimeout(startSequence, displayTime);
   } else if (currentIndex >= chunks.length) {
     outputEl.textContent = "Fim da seção.";
     marcarComoConcluido();
@@ -102,9 +174,9 @@ pauseBtn.addEventListener('click', () => {
 });
 
 speedBtn.addEventListener('click', () => {
-  currentSpeed += 1000;
-  if (currentSpeed > maxSpeed) currentSpeed = minSpeed;
-  speedBtn.textContent = `${currentSpeed / 1000}s`;
+  currentSpeedIndex = (currentSpeedIndex + 1) % speedLevels.length;
+  const label = speedLevels[currentSpeedIndex] + 'x';
+  speedBtn.textContent = label;
 });
 
 function marcarComoConcluido() {
@@ -117,3 +189,4 @@ function marcarComoConcluido() {
 }
 
 carregarCapitulo();
+
