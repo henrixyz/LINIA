@@ -5,8 +5,8 @@ let isPaused = false;
 let prevBtnUsageCount = 0;
 const prevBtnMaxUsage = 3;
 
-const minSpeed = 1000;
-const maxSpeed = 6000;
+const minSpeed = 200;
+const maxSpeed = 3000;
 
 const outputEl = document.getElementById('output');
 const restartBtn = document.getElementById('restartBtn');
@@ -14,14 +14,13 @@ const prevBtn = document.getElementById('prevBtn');
 const pauseBtn = document.getElementById('pauseBtn');
 const speedBtn = document.getElementById('speedBtn');
 
-
 // Níveis de velocidade: -3x, -2x, -1x, 1x, 2x, 3x
 const speedLevels = [-3, -2, -1, 1, 2, 3];
 let currentSpeedIndex = 3; // Começa em 1x
 
 function getDisplayTime(text) {
-  const baseTime = 1000;
-  const timePerChar = 50;
+  const baseTime = 300; // menor tempo base
+  const timePerChar = 20; // menor tempo por caractere
 
   let time = baseTime + text.length * timePerChar;
 
@@ -47,65 +46,12 @@ function getDisplayTimeAdjusted(text) {
   return time;
 }
 
-function smartSplit(text, maxChars = 60) {
-  const sentences = text.match(/[^.!?]+[.!?]*|\s+/g)
-    .filter(Boolean)
-    .map(s => s.trim());
-
-  const result = [];
-
-  sentences.forEach(sentence => {
-    if (sentence.length <= maxChars) {
-      result.push(sentence);
-    } else {
-      let parts = [];
-      let temp = '';
-      const fragments = sentence.split(',');
-
-      for (let i = 0; i < fragments.length; i++) {
-        const fragment = fragments[i].trim();
-        const nextPart = temp ? temp + ', ' + fragment : fragment;
-
-        if (nextPart.length <= maxChars) {
-          temp = nextPart;
-        } else {
-          if (temp) {
-            parts.push(...splitByWords(temp, maxChars));
-          }
-          temp = fragment;
-        }
-      }
-
-      if (temp) {
-        parts.push(...splitByWords(temp, maxChars));
-      }
-
-      result.push(...parts);
-    }
-  });
-
-  return result;
-}
-
-function splitByWords(text, maxChars) {
-  const words = text.split(/\s+/);
-  const result = [];
-  let temp = '';
-
-  for (let i = 0; i < words.length; i++) {
-    const word = words[i];
-    const next = temp ? temp + ' ' + word : word;
-
-    if (next.length <= maxChars) {
-      temp = next;
-    } else {
-      if (temp) result.push(temp);
-      temp = word;
-    }
-  }
-
-  if (temp) result.push(temp);
-  return result;
+function wordSplit(text) {
+  return text
+    .replace(/\s+/g, ' ')
+    .trim()
+    .split(' ')
+    .filter(Boolean);
 }
 
 function carregarCapitulo() {
@@ -116,8 +62,7 @@ function carregarCapitulo() {
   }
 
   const textoLimpo = texto.replace(/^cap[ií]tulo\s+\d+.*\n?/i, '').trim();
-
-  chunks = smartSplit(textoLimpo, 60);
+  chunks = wordSplit(textoLimpo);
   startSequence();
 }
 
@@ -158,7 +103,7 @@ prevBtn.addEventListener('click', () => {
   timerId = setTimeout(() => {
     currentIndex++;
     startSequence();
-  }, 6000);
+  }, 2000); // 2 segundos para exibir anterior
 });
 
 pauseBtn.addEventListener('click', () => {
@@ -190,4 +135,3 @@ function marcarComoConcluido() {
 }
 
 carregarCapitulo();
-

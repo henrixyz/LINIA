@@ -14,13 +14,13 @@ function handleFile(event) {
 
     // 👉 Monta o redirecionamento dinâmico
     if (destino === "leia-agora") {
-      window.location.href = "capitulos.html?proximo=capitulo";
-    } else if (destino === "a") {
-      window.location.href = "separar-capitulos.html?proximo=analise";
-    } else if (destino === "validador") {
-      window.location.href = "separar-capitulos.html?proximo=validador";
-    } else if (destino === "resumo") {
-      window.location.href = "separar-capitulos.html?proximo=resumo";
+      window.location.href = "capitulos.html?proximo=capitulo-normal";
+    } else if (destino === "palavra") {
+      window.location.href = "capitulos.html?proximo=capitulo-palavra";
+    } else if (destino === "texto-narrado") {
+      window.location.href = "capitulos.html?proximo=capitulo-narrado";
+    } else if (destino === "modo-estudo") {
+      window.location.href = "capitulos.html?proximo=modo-estudo";
     } else {
       // Fallback (caso o parâmetro não exista)
       window.location.href = "separar-capitulos.html";
