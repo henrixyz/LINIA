@@ -20,7 +20,7 @@ function handleFile(event) {
     } else if (destino === "texto-narrado") {
       window.location.href = "capitulos.html?proximo=capitulo-narrado";
     } else if (destino === "modo-estudo") {
-      window.location.href = "capitulos.html?proximo=modo-estudo";
+      window.location.href = "capitulos.html?proximo=capitulo-estudo";
     } else {
       // Fallback (caso o parâmetro não exista)
       window.location.href = "separar-capitulos.html";

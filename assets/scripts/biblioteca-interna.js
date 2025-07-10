@@ -12,12 +12,12 @@ function toggleBiblioteca() {
         {
             titulo: "O Alienista",
             autor: "Machado de Assis",
-            capa: "../assets/img/capas/dom-casmurr.jpg"
+            capa: "../assets/img/caps/o-alienista.png"
         },
         {
             titulo: "Memórias Póstumas",
             autor: "Machado de Assis",
-            capa: "../assets/img/capas/memorias-postumas.jpg"
+            capa: "../assets/img/caps/memorias-postumas.jpg"
         },
         {
             titulo: "A Metamorfose",
