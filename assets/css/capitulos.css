@@ -165,3 +165,11 @@ a {
     margin: 20px auto; 
 }
 
+/* parte da pagina lendo */
+.aviso-livro {
+  text-align: center;
+  color: #888;
+  font-size: 1.1rem;
+  margin-top: 40px;
+  font-style: italic;
+}
