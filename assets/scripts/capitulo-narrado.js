@@ -16,65 +16,64 @@ let currentSpeedIndex = 3; // Começa em 1x
 let currentUtterance = null;
 
 function smartSplit(text) {
-  // Fragmenta por sentenças completas: ponto, interrogação ou exclamação
-  const sentences = text.match(/[^.!?:]+[.!?:]+/g)
-  return sentences.map(s => s.trim());
+    const sentences = text.match(/[^.!?:]+[.!?:]+/g)
+    return sentences.map(s => s.trim());
 }
 
 function carregarCapitulo() {
-  const texto = localStorage.getItem("capituloSelecionado");
-  if (!texto) {
-    outputEl.textContent = "Erro ao carregar capítulo.";
-    return;
-  }
+    const texto = localStorage.getItem("capituloSelecionado");
+    if (!texto) {
+        outputEl.textContent = "Erro ao carregar capítulo.";
+        return;
+    }
 
-  const textoLimpo = texto.replace(/^cap[ií]tulo\s+\d+.*\n?/i, '').trim();
-  chunks = smartSplit(textoLimpo);
-  currentIndex = 0;
-  startSequence();
+    const textoLimpo = texto.replace(/^cap[ií]tulo\s+\d+.*\n?/i, '').trim();
+    chunks = smartSplit(textoLimpo);
+    currentIndex = 0;
+    startSequence();
 }
 
 function startSequence() {
-  if (isPaused || currentIndex >= chunks.length) return;
+    if (isPaused || currentIndex >= chunks.length) return;
 
-  const currentText = chunks[currentIndex];
-  outputEl.textContent = currentText;
-  speakText(currentText, () => {
-    currentIndex++;
-    if (!isPaused && currentIndex < chunks.length) {
-      startSequence();
-    } else if (currentIndex >= chunks.length) {
-      outputEl.textContent = "Fim da seção.";
-      speakText("Fim da seção.");
-      marcarComoConcluido();
-    }
-  });
+    const currentText = chunks[currentIndex];
+    outputEl.textContent = currentText;
+    speakText(currentText, () => {
+        currentIndex++;
+        if (!isPaused && currentIndex < chunks.length) {
+        startSequence();
+        } else if (currentIndex >= chunks.length) {
+        outputEl.textContent = "Fim da seção.";
+        speakText("Fim da seção.");
+        marcarComoConcluido();
+        }
+    });
 }
 
 function speakText(text, onEndCallback) {
-  if (!window.speechSynthesis) return;
+    if (!window.speechSynthesis) return;
 
-  speechSynthesis.cancel();
-  currentUtterance = new SpeechSynthesisUtterance(text);
-  currentUtterance.lang = 'pt-BR';
+    speechSynthesis.cancel();
+    currentUtterance = new SpeechSynthesisUtterance(text);
+    currentUtterance.lang = 'pt-BR';
 
-  const availableVoices = speechSynthesis.getVoices();
-  const brVoice = availableVoices.find(v => v.lang === 'pt-BR' || v.name.toLowerCase().includes('brazil'));
+    const availableVoices = speechSynthesis.getVoices();
+    const brVoice = availableVoices.find(v => v.lang === 'pt-BR' || v.name.toLowerCase().includes('brazil'));
 
-  if (brVoice) {
-    currentUtterance.voice = brVoice;
-  }
-
-  const speedFactor = speedLevels[currentSpeedIndex];
-  currentUtterance.rate = Math.max(0.1, Math.abs(speedFactor));
-
-  currentUtterance.onend = () => {
-    if (typeof onEndCallback === 'function') {
-      onEndCallback();
+    if (brVoice) {
+        currentUtterance.voice = brVoice;
     }
-  };
 
-  speechSynthesis.speak(currentUtterance);
+    const speedFactor = speedLevels[currentSpeedIndex];
+    currentUtterance.rate = Math.max(0.1, Math.abs(speedFactor));
+
+    currentUtterance.onend = () => {
+        if (typeof onEndCallback === 'function') {
+            onEndCallback();
+        }
+    };
+
+    speechSynthesis.speak(currentUtterance);
 }
 
 restartBtn.addEventListener('click', () => {
