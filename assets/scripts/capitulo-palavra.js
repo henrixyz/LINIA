@@ -10,7 +10,7 @@ const maxSpeed = 3000;
 
 const outputEl = document.getElementById('output');
 const restartBtn = document.getElementById('restartBtn');
-const prevBtn = document.getElementById('prevBtn');
+const prevBtn = document.getElementById('prevBtn'); 
 const pauseBtn = document.getElementById('pauseBtn');
 const speedBtn = document.getElementById('speedBtn');
 

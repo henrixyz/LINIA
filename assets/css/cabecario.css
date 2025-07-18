@@ -17,11 +17,11 @@ body {
 
 .header {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    /* justify-content: space-between;
+    align-items: center; */
     background-color: #000000;
     color: white;
-    padding: 1rem 1.5rem;
+    padding: 1rem 1.5rem;       
     position: fixed;
     height: 72px; 
     top: 0;

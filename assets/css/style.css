@@ -24,9 +24,19 @@ a {
     align-items: center; 
     margin-bottom: 3rem;
       
-}   
+} 
 
-.slogan-field {
+.teste{
+    width: 100%;
+    height: 0.1rem;
+    background-color: #000000;
+    border-bottom-left-radius: 3rem;
+    border-bottom-right-radius: 3rem;
+    /* padding-bottom: 3rem; */
+    margin-bottom: 2rem;
+}
+
+/* .slogan-field {
     display: flex;
     justify-content: center;
     align-items: center;     
@@ -37,11 +47,13 @@ a {
     border-radius: 5px;
     padding: 0.5rem 0.5rem;
     margin: 0.5rem;
-}
+} */
 
 .slogan-title {
-    font-size: rem;
-    color: hsl(0, 100%, 100%);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    font-weight: bold;
+    color: hsl(0, 0%, 0%);
     margin: 0; 
 }
 
@@ -57,6 +69,8 @@ a {
     text-align: left;
     align-self: flex-start;
     margin-left: 0.3rem;
+    display: inline-block; /* necessário para transform funcionar bem */
+    transform: translateY(-10px); /* sobe 5px */
 
 }
 
@@ -92,6 +106,13 @@ a {
     font-family: sans-serif;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
 }
+.mini-tag-2.normal {
+    width: 3.7rem;
+}
+.mini-tag-2.palavra {
+    width: 5rem;
+}
+
 
 .card-1 {
     display: flex;

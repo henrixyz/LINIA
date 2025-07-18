@@ -14,8 +14,6 @@ const prevBtn = document.getElementById('prevBtn');
 const pauseBtn = document.getElementById('pauseBtn');
 const speedBtn = document.getElementById('speedBtn');
 
-
-// Níveis de velocidade: -3x, -2x, -1x, 1x, 2x, 3x
 const speedLevels = [-3, -2, -1, 1, 2, 3];
 let currentSpeedIndex = 3; // Começa em 1x
 
@@ -24,10 +22,8 @@ function getDisplayTime(text) {
   const timePerChar = 50;
 
   let time = baseTime + text.length * timePerChar;
-
   if (time < minSpeed) time = minSpeed;
   if (time > maxSpeed) time = maxSpeed;
-
   return time;
 }
 
@@ -36,15 +32,12 @@ function getDisplayTimeAdjusted(text) {
   const speedValue = speedLevels[currentSpeedIndex];
 
   if (speedValue < 0) {
-    time = time * Math.abs(speedValue); // mais devagar
+    time *= Math.abs(speedValue);
   } else {
-    time = time / speedValue; // mais rápido
+    time /= speedValue;
   }
 
-  if (time < minSpeed) time = minSpeed;
-  if (time > maxSpeed) time = maxSpeed;
-
-  return time;
+  return Math.max(minSpeed, Math.min(maxSpeed, time));
 }
 
 function smartSplit(text, maxChars = 60) {
@@ -69,17 +62,12 @@ function smartSplit(text, maxChars = 60) {
         if (nextPart.length <= maxChars) {
           temp = nextPart;
         } else {
-          if (temp) {
-            parts.push(...splitByWords(temp, maxChars));
-          }
+          if (temp) parts.push(...splitByWords(temp, maxChars));
           temp = fragment;
         }
       }
 
-      if (temp) {
-        parts.push(...splitByWords(temp, maxChars));
-      }
-
+      if (temp) parts.push(...splitByWords(temp, maxChars));
       result.push(...parts);
     }
   });
@@ -116,21 +104,23 @@ function carregarCapitulo() {
   }
 
   const textoLimpo = texto.replace(/^cap[ií]tulo\s+\d+.*\n?/i, '').trim();
-
   chunks = smartSplit(textoLimpo, 60);
   startSequence();
 }
 
 function startSequence() {
   clearTimeout(timerId);
+
   if (!isPaused && currentIndex < chunks.length) {
     showCurrentChunk();
+    atualizarBarraProgresso(); // <-- Aqui
     const displayTime = getDisplayTimeAdjusted(chunks[currentIndex]);
     currentIndex++;
     timerId = setTimeout(startSequence, displayTime);
   } else if (currentIndex >= chunks.length) {
     outputEl.textContent = "Fim da seção.";
     marcarComoConcluido();
+    atualizarBarraProgresso(); // garante 100%
   }
 }
 
@@ -154,6 +144,7 @@ prevBtn.addEventListener('click', () => {
   clearTimeout(timerId);
   currentIndex = Math.max(0, currentIndex - 2);
   showCurrentChunk();
+  atualizarBarraProgresso();
   prevBtnUsageCount++;
   timerId = setTimeout(() => {
     currentIndex++;
@@ -189,5 +180,12 @@ function marcarComoConcluido() {
   }
 }
 
-carregarCapitulo();
+function atualizarBarraProgresso() {
+  const progresso = (currentIndex / chunks.length) * 100;
+  const barra = document.getElementById("barra-preenchida");
+  if (barra) {
+    barra.style.width = `${Math.min(100, progresso)}%`;
+  }
+}
 
+carregarCapitulo();
