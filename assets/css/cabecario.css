@@ -9,7 +9,7 @@
 }
 
 body {
-    font-family: 'Arial', sans-serif;
+    /* font-family: 'Arial', sans-serif; */
     background: #06090f;
     padding-bottom: 80px; 
     padding-top: 72px; 
@@ -17,13 +17,14 @@ body {
 
 .header {
     display: flex;
-    /* justify-content: space-between;
-    align-items: center; */
+    justify-content: center; /* centraliza horizontalmente */
+    align-items: center;     /* centraliza verticalmente */
     background-color: #000000;
-    color: white;
-    padding: 1rem 1.5rem;       
+    color: rgb(241, 240, 240);
+    padding: 1rem 1.5rem;
     position: fixed;
-    height: 72px; 
+    font-weight: bold;
+    height: 72px;
     top: 0;
     left: 0;
     width: 100%;
@@ -34,6 +35,7 @@ body {
 
 .logo {
     width: 2rem;
+    height: 1.5rem;
 }
 
 .logo-nome {

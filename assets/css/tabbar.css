@@ -4,13 +4,13 @@
     left: 50%;
     transform: translateX(-50%);
     background: rgba(64, 64, 64, 0.6);
-    padding: 15px 30px;
+    padding: 10px 30px;
     border-radius: 25px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 50px;
+    gap: 30px;
     z-index: 100;
     border: 1px solid rgba(255, 255, 255, 0.2);
     
@@ -19,7 +19,7 @@
 }
 
 .tab {
-    width: 1.3rem;
+    width: 1.2rem;
     cursor: pointer;
     opacity: 0.6;
     transition: filter 0.3s, opacity 0.3s;
@@ -31,7 +31,7 @@
 }
 
 /* Botão "+" */
-.upload-btn {
+/* .upload-btn {
     background-color: #111;
     color: white;
     font-size: 2rem;
@@ -51,4 +51,4 @@
 
 #fileInput {
     display: none;
-}
+} */
